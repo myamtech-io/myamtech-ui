@@ -7,12 +7,12 @@ pipeline {
   agent any
 
   stages {
-    stage('Build Docker') {
+    stage('Build') {
       steps {
         sh 'docker build -t webmakersteve/myamtech-frontend:latest .'
       }
     }
-    stage('Release Docker') {
+    stage('Publish') {
       steps {
         sh 'docker push webmakersteve/myamtech-frontend:latest'
       }
@@ -25,7 +25,7 @@ pipeline {
   }
   post {
     always {
-      sh 'docker rmi webmakersteve/myamtech-frontend:latest || exit 0'
+      sh 'docker rmi -f webmakersteve/myamtech-frontend:latest || exit 0'
     }
   }
 }
