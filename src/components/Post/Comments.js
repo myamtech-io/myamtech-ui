@@ -1,18 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FacebookProvider, { Comments as FBComments } from "react-facebook";
+import { DiscussionEmbed, CommentCount } from "disqus-react";
 
 import config from "../../../content/meta/config";
 
 const Comments = props => {
-  const { facebook, slug, theme } = props;
+  const { slug, theme, title } = props;
+  const disqusShortname = "myamtech";
+  const disqusConfig = {
+    url: `${config.siteUrl}${slug}`,
+    identifier: slug,
+    title: title
+  };
 
   return (
     <React.Fragment>
       <div id="post-comments" className="comments">
-        <FacebookProvider appId={facebook.appId}>
-          <FBComments href={`${config.siteUrl}${slug}`} width="100%" colorscheme="light" />
-        </FacebookProvider>
+        <CommentCount shortname={disqusShortname} config={disqusConfig}>
+          Comments
+        </CommentCount>
+        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </div>
 
       {/* --- STYLES --- */}
@@ -27,8 +34,9 @@ const Comments = props => {
 
 Comments.propTypes = {
   slug: PropTypes.string.isRequired,
-  facebook: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
+  // disqus: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default Comments;

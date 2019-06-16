@@ -35,8 +35,8 @@ module.exports = {
     title: config.siteTitle,
     description: config.siteDescription,
     siteUrl: config.siteUrl,
-    facebook: {
-      appId: process.env.FB_APP_ID ? process.env.FB_APP_ID : ""
+    disqus: {
+      appId: process.env.DSQ_APP_ID ? process.env.DSQ_APP_ID : ""
     }
   },
   plugins: [

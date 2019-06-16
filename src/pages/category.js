@@ -13,7 +13,7 @@ const CategoryPage = props => {
     data: {
       posts: { edges: posts },
       site: {
-        siteMetadata: { facebook }
+        siteMetadata: { disqus }
       }
     }
   } = props;
@@ -71,7 +71,7 @@ const CategoryPage = props => {
         )}
       </ThemeContext.Consumer>
 
-      <Seo facebook={facebook} />
+      <Seo disqus={disqus} />
     </React.Fragment>
   );
 };
@@ -115,7 +115,7 @@ export const query = graphql`
     }
     site {
       siteMetadata {
-        facebook {
+        disqus {
           appId
         }
       }

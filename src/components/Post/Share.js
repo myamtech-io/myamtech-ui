@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  FacebookShareButton,
+  facebookShareButton,
   GooglePlusShareButton,
   LinkedinShareButton,
   TwitterShareButton,
-  FacebookShareCount,
+  facebookShareCount,
   GooglePlusShareCount,
   LinkedinShareCount,
-  FacebookIcon,
+  facebookIcon,
   TwitterIcon,
   GooglePlusIcon,
   LinkedinIcon
@@ -56,18 +56,18 @@ const PostShare = props => {
               {count => <div className="share-count">{filter(count)}</div>}
             </GooglePlusShareCount>
           </GooglePlusShareButton>
-          <FacebookShareButton
+          <facebookShareButton
             url={url}
             quote={`${title} - ${excerpt}`}
             additionalProps={{
-              "aria-label": "Facebook share"
+              "aria-label": "facebook share"
             }}
           >
-            <FacebookIcon round size={iconSize} />
-            <FacebookShareCount url={url}>
+            <facebookIcon round size={iconSize} />
+            <facebookShareCount url={url}>
               {count => <div className="share-count">{filter(count)}</div>}
-            </FacebookShareCount>
-          </FacebookShareButton>
+            </facebookShareCount>
+          </facebookShareButton>
           <LinkedinShareButton
             url={url}
             title={title}

@@ -11,7 +11,7 @@ const PageTemplate = props => {
     data: {
       page,
       site: {
-        siteMetadata: { facebook }
+        siteMetadata: { disqus }
       }
     }
   } = props;
@@ -26,7 +26,7 @@ const PageTemplate = props => {
         )}
       </ThemeContext.Consumer>
 
-      <Seo data={page} facebook={facebook} />
+      <Seo data={page} disqus={disqus} />
     </React.Fragment>
   );
 };
@@ -49,7 +49,7 @@ export const pageQuery = graphql`
     }
     site {
       siteMetadata {
-        facebook {
+        disqus {
           appId
         }
       }

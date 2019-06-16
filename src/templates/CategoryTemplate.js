@@ -14,7 +14,7 @@ const CategoryTemplate = props => {
     data: {
       allMarkdownRemark: { totalCount, edges },
       site: {
-        siteMetadata: { facebook }
+        siteMetadata: { disqus }
       }
     }
   } = props;
@@ -42,7 +42,7 @@ const CategoryTemplate = props => {
         )}
       </ThemeContext.Consumer>
 
-      <Seo facebook={facebook} />
+      <Seo disqus={disqus} />
     </React.Fragment>
   );
 };
@@ -79,7 +79,7 @@ export const categoryQuery = graphql`
     }
     site {
       siteMetadata {
-        facebook {
+        disqus {
           appId
         }
       }

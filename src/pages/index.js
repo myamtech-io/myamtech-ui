@@ -27,7 +27,7 @@ class IndexPage extends React.Component {
           resize: { src: mobile }
         },
         site: {
-          siteMetadata: { facebook }
+          siteMetadata: { disqus }
         }
       }
     } = this.props;
@@ -52,7 +52,7 @@ class IndexPage extends React.Component {
           {theme => <Blog posts={posts} theme={theme} />}
         </ThemeContext.Consumer>
 
-        <Seo facebook={facebook} />
+        <Seo disqus={disqus} />
 
         <style jsx>{`
           hr {
@@ -104,7 +104,7 @@ export const query = graphql`
     }
     site {
       siteMetadata {
-        facebook {
+        disqus {
           appId
         }
       }
