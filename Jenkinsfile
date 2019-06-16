@@ -18,8 +18,11 @@ pipeline {
       }
     }
     stage('Deploy') {
+      when {
+        branch 'master'
+      }
       steps {
-        sh 'kubectl apply -f packaging/manifest.yml'
+        sh 'cat packaging/manifest.yml | sed "s/{{COMMIT_HASH}}/${GIT_COMMIT:-local}/g" | kubectl apply -f -'
       }
     }
   }
