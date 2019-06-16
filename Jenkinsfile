@@ -22,14 +22,10 @@ pipeline {
         sh 'kubectl apply -f packaging/manifest.yml'
       }
     }
-    try {
-      stage('Cleanup created artifacts') {
-        steps {
-          sh 'docker rmi webmakersteve/myamtech-frontend:latest'
-        }
-      }
-    } catch (err) {
-      echo "Could not clean up created artifacts"
+  }
+  post {
+    always {
+      sh 'docker rmi webmakersteve/myamtech-frontend:latest || exit 0'
     }
   }
 }

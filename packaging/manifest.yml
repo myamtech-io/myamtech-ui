@@ -16,11 +16,9 @@ spec:
         app: frontend
     spec:
       containers:
-        image: webmakersteve/myamtech-frontend:latest
+      - image: webmakersteve/myamtech-frontend:latest
         imagePullPolicy: Always
         name: frontend
         ports:
         - containerPort: 80
           protocol: TCP
-      restartPolicy: Always
-      schedulerName: default-scheduler
