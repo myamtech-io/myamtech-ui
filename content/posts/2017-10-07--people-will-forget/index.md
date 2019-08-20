@@ -3,6 +3,7 @@ title: People will forget what you said, people will forget what you did
 category: "sayings"
 cover: photo-1489900464632-5f5907edda24.jpg
 author: greg lobinski
+featured: false
 ---
 
 Fusce a metus eu diam varius congue nec nec sapien. Nunc convallis accumsan justo. **Pellentesque** habitant morbi [tristique](http://google.com) senectus et netus et malesuada fames ac turpis egestas. Donec malesuada vehicula lectus, viverra sodales ipsum gravida nec. _Integer gravida_ nisi ut magna mollis molestie. Nullam pharetra accumsan sagittis. Proin tristique rhoncus orci, eget vulputate nisi sollicitudin et. Quisque lacus augue, mollis non mollis et, ullamcorper in purus. Morbi et sem orci.

@@ -18,7 +18,7 @@ const List = props => {
 
           return (
             <li key={slug}>
-              <Link to={slug}>{title}</Link>
+              <Link to={slug}>{title} i dont know what this is</Link>
             </li>
           );
         })}

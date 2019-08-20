@@ -89,6 +89,7 @@ export const query = graphql`
             title
             category
             author
+            featured
             cover {
               children {
                 ... on ImageSharp {
