@@ -1,20 +1,33 @@
+@Library('webmakersteve') _
+
+publishedImages = [
+  "webmakersteve/myamtech-frontend"
+]
+
 pipeline {
-  // agent {
-  //  docker {
-  //    image 'node'
-  //  }
-  // }
   agent any
 
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t webmakersteve/myamtech-frontend:latest .'
+        withVersion {
+          script {
+            dockerHelper.build(this, publishedImages)
+          }
+        }
       }
     }
     stage('Publish') {
+      when {
+        branch 'master'  //only run these steps on the master branch
+      }
+
       steps {
-        sh 'docker push webmakersteve/myamtech-frontend:latest'
+        withVersion {
+          script {
+            dockerHelper.publish(this, publishedImages)
+          }
+        }
       }
     }
     stage('Deploy') {
@@ -22,13 +35,20 @@ pipeline {
         branch 'master'
       }
       steps {
-        sh 'cat packaging/manifest.yml | sed "s/{{COMMIT_HASH}}/${GIT_COMMIT:-local}/g" | kubectl apply -f -'
+        withVersion {
+          sh 'cat packaging/manifest.yml | sed "s/{{COMMIT_HASH}}/${VERSION:-local}/g" | kubectl apply -f -'
+        }
       }
     }
   }
   post {
     always {
-      sh 'docker rmi -f webmakersteve/myamtech-frontend:latest || exit 0'
+      archiveArtifacts artifacts: 'deployment.properties,', fingerprint: true
+      withVersion {
+        script {
+          dockerHelper.clean(this, publishedImages)
+        }
+      }
     }
   }
 }
