@@ -43,7 +43,9 @@ pipeline {
   }
   post {
     always {
-      archiveArtifacts artifacts: 'deployment.properties,', fingerprint: true
+      writeDeploymentFile {
+        archiveArtifacts artifacts: 'deployment.properties,', fingerprint: true
+      }
       withVersion {
         script {
           dockerHelper.clean(this, publishedImages)
